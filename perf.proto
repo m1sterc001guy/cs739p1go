@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package perfmeasurements;
+
+service PerfService {
+  rpc SendInt (IntMessage) returns (IntReply) {}
+  rpc SendDouble(DoubleMessage) returns (DoubleReply) {}
+  rpc SendString(StringMessage) returns (StringReply) {}
+  //implement comlex data structure here
+  //server streaming
+  rpc ListColleges(StringMessage) returns (stream StringReply) {}
+  //client streaming
+  rpc SendPreferences(stream StringMessage) returns (StringReply) {}
+}
+
+message IntMessage {
+  int32 number = 1;
+}
+
+message IntReply {
+  int32 replynumber = 1;
+}
+
+message DoubleMessage {
+  double number = 1;
+}
+
+message DoubleReply {
+  double replynumber = 1;
+}
+
+message StringMessage {
+  string stringmessage = 1;
+}
+
+message StringReply {
+  string stringreply = 1;
+}
